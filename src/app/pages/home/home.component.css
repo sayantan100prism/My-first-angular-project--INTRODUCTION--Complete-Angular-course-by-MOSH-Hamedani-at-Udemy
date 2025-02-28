@@ -1,0 +1,501 @@
+.hero {
+  padding: 5rem 0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--background-color);
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 3rem;
+  padding: 0 1rem;
+}
+
+.hero-text {
+  flex: 2;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  color: var(--text-color);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-text h2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.highlight {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.primary:hover {
+  background-color: #2980b9;
+}
+
+.secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.secondary:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px var(--shadow-color);
+  transition: transform 0.3s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.02);
+}
+
+/* Skills Section */
+.skills {
+  padding: 4rem 0;
+  background-color: var(--background-alt-color);
+  text-align: center;
+}
+
+.skills h2 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.skills h2:after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-color);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.skill-tag {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid var(--shadow-color);
+}
+
+.skill-tag:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+}
+
+/* GitHub Activity Section */
+.github-activity {
+  padding: 4rem 0;
+  background-color: var(--background-color);
+}
+
+.github-activity h2 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.github-activity h2:after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-color);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.github-profile {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+  padding: 2rem;
+  background-color: var(--background-alt-color);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.github-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+
+.github-info {
+  flex: 1;
+}
+
+.github-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.github-info h3 a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.github-info h3 a:hover {
+  color: var(--primary-color);
+}
+
+.github-info p {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.github-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.recent-repos {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.recent-repos h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.repo-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.repo-card {
+  background-color: var(--background-alt-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px var(--shadow-color);
+  transition: transform 0.3s ease;
+}
+
+.repo-card:hover {
+  transform: translateY(-5px);
+}
+
+.repo-card h4 {
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.repo-card h4 a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.repo-card h4 a:hover {
+  color: var(--primary-color);
+}
+
+.repo-card p {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.repo-details {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.85rem;
+}
+
+.language {
+  background-color: var(--background-color);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  color: var(--primary-color);
+}
+
+.stars, .forks {
+  color: var(--text-color);
+}
+
+.repo-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.topic {
+  background-color: rgba(155, 89, 182, 0.1);
+  color: var(--accent-color);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.view-all {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.view-all:hover {
+  color: var(--primary-color);
+}
+
+/* Experience Section */
+.experience {
+  padding: 4rem 0;
+  background-color: var(--background-alt-color);
+}
+
+.experience h2 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.experience h2:after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--secondary-color);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background-color: var(--shadow-color);
+}
+
+.timeline-item {
+  padding: 2rem 0;
+  position: relative;
+}
+
+.timeline-content {
+  position: relative;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px var(--shadow-color);
+  z-index: 1;
+  width: calc(50% - 30px);
+  margin-left: 50%;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: 0;
+  margin-right: 50%;
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  top: 30px;
+  left: -40px;
+  z-index: 2;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+  left: auto;
+  right: -40px;
+}
+
+.timeline-content h3 {
+  font-size: 1.3rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content h4 {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 0.8rem;
+}
+
+.timeline-content .date {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-content .location {
+  font-style: italic;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.job-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.skill-pill {
+  background-color: rgba(46, 204, 113, 0.1);
+  color: var(--secondary-color);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  
+  .hero-image {
+    margin-bottom: 2rem;
+  }
+  
+  .hero-cta {
+    justify-content: center;
+  }
+  
+  .timeline::before {
+    left: 30px;
+  }
+  
+  .timeline-content {
+    width: calc(100% - 80px);
+    margin-left: 80px !important;
+    margin-right: 0 !important;
+  }
+  
+  .timeline-content::before {
+    left: -50px !important;
+    right: auto !important;
+  }
+  
+  .github-profile {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .github-avatar {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .github-stats {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,18 @@
+<header class="header">
+  <div class="logo">
+    <h1>My Portfolio</h1>
+  </div>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item"><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+      <li class="nav-item"><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
+      <li class="nav-item"><a routerLink="/experience" routerLinkActive="active">Experience</a></li>
+      <li class="nav-item"><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="theme-toggle">
+    <button class="theme-button" (click)="toggleTheme()">
+      <span class="material-icons">{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</span>
+    </button>
+  </div>
+</header>

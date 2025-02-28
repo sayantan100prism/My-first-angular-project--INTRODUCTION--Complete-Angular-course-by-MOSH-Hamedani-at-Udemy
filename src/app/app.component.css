@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --accent-color: #9b59b6;
+  --text-color: #333;
+  --background-color: #f9f9f9;
+  --background-alt-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.content-container {
+  flex: 1;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    padding: 10px;
+  }
+}

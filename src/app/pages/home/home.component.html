@@ -1,0 +1,87 @@
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>Hello, I'm <span class="highlight">{{ profile?.firstName }} {{ profile?.lastName }}</span></h1>
+      <h2>{{ profile?.headline }}</h2>
+      <p>{{ profile?.summary }}</p>
+      <div class="hero-cta">
+        <a routerLink="/projects" class="btn primary">View Projects</a>
+        <a routerLink="/contact" class="btn secondary">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img [src]="profile?.profilePicture || 'https://media.licdn.com/dms/image/D5603AQFpIQAZC9k3nA/profile-displayphoto-shrink_800_800/0/1708962070828?e=1714608000&v=beta&t=9P30AY5tJA9f2gXDQZIgqDCM5kJ2XbUj67TQQXeD4cc'" alt="Profile Photo">
+    </div>
+  </div>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <div class="skills-container">
+    <div *ngFor="let skill of profile?.skills" class="skill-tag">
+      {{ skill }}
+    </div>
+  </div>
+</section>
+
+<section class="github-activity" *ngIf="githubProfile">
+  <h2>GitHub Activity</h2>
+  <div class="github-profile">
+    <img [src]="githubProfile.avatar_url" alt="GitHub Profile" class="github-avatar">
+    <div class="github-info">
+      <h3><a [href]="githubProfile.html_url" target="_blank">{{ githubProfile.name }}</a></h3>
+      <p>{{ githubProfile.bio }}</p>
+      <div class="github-stats">
+        <div class="stat">
+          <span class="stat-count">{{ githubProfile.public_repos }}</span>
+          <span class="stat-label">Repositories</span>
+        </div>
+        <div class="stat">
+          <span class="stat-count">{{ githubProfile.followers }}</span>
+          <span class="stat-label">Followers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-count">{{ githubProfile.following }}</span>
+          <span class="stat-label">Following</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="recent-repos">
+    <h3>Recent Repositories</h3>
+    <div class="repo-list">
+      <div *ngFor="let repo of githubRepos" class="repo-card">
+        <h4><a [href]="repo.html_url" target="_blank">{{ repo.name }}</a></h4>
+        <p>{{ repo.description || 'No description available' }}</p>
+        <div class="repo-details">
+          <span class="language" *ngIf="repo.language">{{ repo.language }}</span>
+          <span class="stars">⭐ {{ repo.stargazers_count }}</span>
+          <span class="forks">🍴 {{ repo.forks_count }}</span>
+        </div>
+        <div class="repo-topics" *ngIf="repo.topics && repo.topics.length > 0">
+          <span *ngFor="let topic of repo.topics" class="topic">{{ topic }}</span>
+        </div>
+      </div>
+    </div>
+    <a [href]="'https://github.com/' + githubUsername" target="_blank" class="view-all">View All Repositories</a>
+  </div>
+</section>
+
+<section class="experience">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div *ngFor="let job of profile?.experience" class="timeline-item">
+      <div class="timeline-content">
+        <h3>{{ job.title }}</h3>
+        <h4>{{ job.company }}</h4>
+        <p class="date">{{ formatDate(job.startDate) }} - {{ job.endDate === 'Present' ? 'Present' : formatDate(job.endDate) }}</p>
+        <p class="location">{{ job.location }}</p>
+        <p>{{ job.description }}</p>
+        <div class="job-skills">
+          <span *ngFor="let skill of job.skills" class="skill-pill">{{ skill }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

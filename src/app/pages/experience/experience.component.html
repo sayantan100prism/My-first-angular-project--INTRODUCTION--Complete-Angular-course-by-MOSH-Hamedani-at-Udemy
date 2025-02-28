@@ -1,0 +1,150 @@
+<section class="experience-page">
+  <div class="container">
+    <div class="page-header">
+      <h1>Experience, Education & Certifications</h1>
+      <p>My professional journey, academic background, and professional certifications.</p>
+    </div>
+    
+    <div class="experience-container">
+      <div class="section-header">
+        <h2>Work Experience</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="timeline">
+        <div *ngFor="let job of workExperience" class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span>{{ formatDate(job.startDate) }} - {{ job.endDate === 'Present' ? 'Present' : formatDate(job.endDate) }}</span>
+          </div>
+          <div class="timeline-content">
+            <h3>{{ job.title }}</h3>
+            <h4>{{ job.company }}</h4>
+            <p class="location">{{ job.location }}</p>
+            <p class="description">{{ job.description }}</p>
+            <div class="skills-used">
+              <span *ngFor="let skill of job.skills" class="skill-tag">{{ skill }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="education-container">
+      <div class="section-header">
+        <h2>Education</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="timeline">
+        <div *ngFor="let edu of education" class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span>{{ formatDate(edu.startDate) }} - {{ formatDate(edu.endDate) }}</span>
+          </div>
+          <div class="timeline-content">
+            <h3>{{ edu.degree }}</h3>
+            <h4>{{ edu.school }}</h4>
+            <p class="field">{{ edu.field }}</p>
+            <p class="description">{{ edu.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="projects-container">
+      <div class="section-header">
+        <h2>Projects</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="projects-grid">
+        <div *ngFor="let project of projects" class="project-card">
+          <div class="project-header">
+            <h3>{{ project.title }}</h3>
+            <div class="project-date">{{ project.date }}</div>
+          </div>
+          <div class="project-body">
+            <p class="project-description">{{ project.description }}</p>
+            <div class="project-technologies">
+              <span *ngFor="let tech of project.technologies" class="tech-tag">{{ tech }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="certifications-container">
+      <div class="section-header">
+        <h2>Certifications</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="certifications-grid">
+        <div *ngFor="let cert of certifications" class="certification-card">
+          <div class="certification-header">
+            <h3>{{ cert.name }}</h3>
+            <div class="certification-issuer">
+              <span>{{ cert.issuer }}</span>
+              <span class="certification-date">{{ formatDate(cert.issueDate) }}</span>
+            </div>
+          </div>
+          <div class="certification-body">
+            <div class="credential-id" *ngIf="cert.credentialId">
+              <strong>Credential ID:</strong> {{ cert.credentialId }}
+            </div>
+            <div class="certification-actions">
+              <a [href]="cert.credentialURL" target="_blank" class="view-credential" *ngIf="cert.credentialURL">
+                <i class="fas fa-external-link-alt"></i> View Credential
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="achievements-container">
+      <div class="section-header">
+        <h2>Achievements</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="achievements-list">
+        <div *ngFor="let achievement of achievements" class="achievement-item">
+          <i class="fas fa-trophy achievement-icon"></i>
+          <p>{{ achievement }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="skills-container">
+      <div class="section-header">
+        <h2>Skills & Technologies</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-category" *ngFor="let category of skillCategories">
+          <h3>{{ category.name }}</h3>
+          <div class="skill-list">
+            <div class="skill-item" *ngFor="let skill of category.skills">
+              <div class="skill-info">
+                <span class="skill-name">{{ skill.name }}</span>
+                <div class="skill-level">
+                  <div class="skill-progress" [style.width]="skill.level + '%'"></div>
+                </div>
+              </div>
+              <span class="skill-percentage">{{ skill.level }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="download-resume">
+      <a href="#" class="resume-btn">
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+    </div>
+  </div>
+</section>

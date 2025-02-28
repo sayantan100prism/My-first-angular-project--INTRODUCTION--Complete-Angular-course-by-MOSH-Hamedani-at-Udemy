@@ -1,0 +1,73 @@
+<section class="projects">
+  <div class="container">
+    <div class="projects-header">
+      <h1>Projects</h1>
+      <p>A collection of my recent work and projects from GitHub.</p>
+      
+      <div class="github-input">
+        <form (ngSubmit)="fetchRepositories()" class="github-form">
+          <div class="form-group">
+            <label for="username">GitHub Username</label>
+            <div class="input-group">
+              <input 
+                type="text" 
+                id="username" 
+                name="username"
+                [(ngModel)]="githubUsername"
+                placeholder="Enter GitHub username"
+              >
+              <button type="submit" class="fetch-btn" [disabled]="loading">
+                <span *ngIf="!loading">Fetch Projects</span>
+                <span *ngIf="loading">Loading...</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <div class="loading-message" *ngIf="loading">
+      <i class="fas fa-spinner fa-spin"></i> Loading repositories...
+    </div>
+    
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+    
+    <div class="projects-grid" *ngIf="!loading && repositories.length > 0">
+      <div class="project-card" *ngFor="let repo of repositories">
+        <div class="project-header">
+          <h3><a [href]="repo.html_url" target="_blank">{{ repo.name }}</a></h3>
+          <div class="project-stats">
+            <span class="stat"><i class="fas fa-star"></i> {{ repo.stargazers_count }}</span>
+            <span class="stat"><i class="fas fa-code-branch"></i> {{ repo.forks_count }}</span>
+          </div>
+        </div>
+        
+        <p class="project-description">{{ repo.description || 'No description available' }}</p>
+        
+        <div class="project-language" *ngIf="repo.language">
+          <span class="language-dot" [style.backgroundColor]="getLanguageColor(repo.language)"></span>
+          {{ repo.language }}
+        </div>
+        
+        <div class="project-topics" *ngIf="repo.topics && repo.topics.length > 0">
+          <span *ngFor="let topic of repo.topics" class="topic-tag">{{ topic }}</span>
+        </div>
+        
+        <div class="project-links">
+          <a [href]="repo.html_url" target="_blank" class="project-link">
+            <i class="fab fa-github"></i> View Repository
+          </a>
+          <a *ngIf="repo.homepage" [href]="repo.homepage" target="_blank" class="project-link">
+            <i class="fas fa-external-link-alt"></i> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="no-projects" *ngIf="!loading && repositories.length === 0 && !error">
+      <p>No repositories found. Try another GitHub username.</p>
+    </div>
+  </div>
+</section>

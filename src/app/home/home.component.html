@@ -50,8 +50,7 @@
     <img [src]="'assets/images/profile.jpg'" alt="GitHub Profile" class="github-avatar">
     <div class="github-info">
       <h3><a [href]="'https://github.com/' + githubUsername" target="_blank">{{ profile?.firstName }} {{ profile?.lastName }}</a></h3>
-      <!-- Safe use of profile summary with null checks -->
-      <p>{{ getSummaryExcerpt() }}</p>
+      <p>{{ profile?.summary.substring(0, 100) }}...</p>
       <div class="github-stats">
         <div class="stat">
           <span class="stat-count">12</span>
@@ -77,7 +76,7 @@
         <h4>{{ project.title }}</h4>
         <p>{{ project.description }}</p>
         <div class="repo-details">
-          <span class="language" *ngIf="project.technologies && project.technologies.length > 0">{{ project.technologies[0] }}</span>
+          <span class="language" *ngIf="project.technologies.length > 0">{{ project.technologies[0] }}</span>
           <span class="date">{{ project.date }}</span>
         </div>
         <div class="repo-topics">

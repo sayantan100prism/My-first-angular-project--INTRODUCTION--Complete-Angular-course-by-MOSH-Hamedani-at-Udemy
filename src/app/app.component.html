@@ -1,5 +1,19 @@
+<!-- 
+  Main Application Layout
+  
+  This file defines the overall layout structure of the portfolio website:
+  - Header: Contains navigation menu (app-header component)
+  - Main content area: Where page content is displayed via router-outlet
+  - Footer: Contains contact information and links (app-footer component)
+-->
+
+<!-- Header Component: Navigation and branding -->
 <app-header></app-header>
+
+<!-- Main Content Area: Router outlet displays the active route component -->
 <main class="content-container">
   <router-outlet></router-outlet>
 </main>
+
+<!-- Footer Component: Contact information and links -->
 <app-footer></app-footer>

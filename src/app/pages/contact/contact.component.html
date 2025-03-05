@@ -1,39 +1,79 @@
+<!-- 
+  Contact Page
+  Displays contact information and a contact form for visitors to get in touch
+-->
 <section class="contact">
   <div class="contact-container">
+    <!-- Contact Information Section -->
     <div class="contact-info">
       <h1>Get In Touch</h1>
       <p>Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
       
       <div class="contact-methods">
+        <!-- Email Contact Method -->
         <div class="contact-method">
           <i class="fas fa-envelope"></i>
           <div class="method-details">
             <h3>Email</h3>
-            <p>sayantanpal100&#64;gmail.com</p>
+            <p>{{ profile?.contact?.email || 'sayantanpal100@gmail.com' }}</p>
           </div>
         </div>
         
+        <!-- Location Contact Method -->
         <div class="contact-method">
           <i class="fas fa-map-marker-alt"></i>
           <div class="method-details">
             <h3>Location</h3>
-            <p>Jalpaiguri, West Bengal, India, Pin: 735102</p>
+            <p>{{ profile?.contact?.location || 'Jalpaiguri, West Bengal, India' }}</p>
           </div>
         </div>
         
+        <!-- LinkedIn Contact Method -->
         <div class="contact-method">
           <i class="fab fa-linkedin"></i>
           <div class="method-details">
             <h3>LinkedIn</h3>
-            <p><a href="https://www.linkedin.com/in/sayantan-pal-056996125" target="_blank">linkedin.com/in/sayantan-pal-056996125</a></p>
+            <p>
+              <a [href]="profile?.contact?.linkedin || 'https://www.linkedin.com/in/sayantan-pal-056996125'" target="_blank">
+                {{ getProfileName(profile?.contact?.linkedin) || 'sayantan-pal-056996125' }}
+              </a>
+            </p>
+          </div>
+        </div>
+        
+        <!-- GitHub Contact Method -->
+        <div class="contact-method">
+          <i class="fab fa-github"></i>
+          <div class="method-details">
+            <h3>GitHub</h3>
+            <p>
+              <a [href]="profile?.contact?.github || 'https://github.com/sayantan017pal'" target="_blank">
+                {{ getProfileName(profile?.contact?.github) || 'sayantan017pal' }}
+              </a>
+            </p>
+          </div>
+        </div>
+        
+        <!-- Kaggle Contact Method (if available) -->
+        <div class="contact-method" *ngIf="profile?.contact?.kaggle">
+          <i class="fab fa-kaggle"></i>
+          <div class="method-details">
+            <h3>Kaggle</h3>
+            <p>
+              <a [href]="profile?.contact?.kaggle" target="_blank">
+                {{ getProfileName(profile?.contact?.kaggle) }}
+              </a>
+            </p>
           </div>
         </div>
       </div>
     </div>
     
+    <!-- Contact Form Section -->
     <div class="contact-form-container">
       <h2>Send a Message</h2>
       <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <!-- Name Field -->
         <div class="form-group">
           <label for="name">Name</label>
           <input 
@@ -47,6 +87,7 @@
           </div>
         </div>
         
+        <!-- Email Field -->
         <div class="form-group">
           <label for="email">Email</label>
           <input 
@@ -61,6 +102,7 @@
           </div>
         </div>
         
+        <!-- Subject Field -->
         <div class="form-group">
           <label for="subject">Subject</label>
           <input 
@@ -74,6 +116,7 @@
           </div>
         </div>
         
+        <!-- Message Field -->
         <div class="form-group">
           <label for="message">Message</label>
           <textarea 
@@ -87,15 +130,18 @@
           </div>
         </div>
         
+        <!-- Submit Button -->
         <button type="submit" class="submit-btn" [disabled]="loading">
           <span *ngIf="!loading">Send Message</span>
           <span *ngIf="loading">Sending...</span>
         </button>
         
+        <!-- Success Message -->
         <div class="form-alert success" *ngIf="submitted && success">
           Your message has been sent successfully!
         </div>
         
+        <!-- Error Message -->
         <div class="form-alert error" *ngIf="submitted && error">
           {{ error }}
         </div>

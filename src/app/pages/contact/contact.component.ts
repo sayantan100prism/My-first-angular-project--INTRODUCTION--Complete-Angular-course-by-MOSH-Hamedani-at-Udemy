@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { LinkedinService, LinkedinProfile } from '../../services/linkedin.service';
 
+/**
+ * Contact Component
+ * Displays contact information and a contact form
+ */
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -15,15 +20,25 @@ export class ContactComponent implements OnInit {
   loading = false;
   success = false;
   error: string | null = null;
+  profile: LinkedinProfile | null = null;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private linkedinService: LinkedinService
+  ) {}
 
   ngOnInit(): void {
+    // Initialize contact form
     this.contactForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       subject: ['', Validators.required],
       message: ['', Validators.required]
+    });
+
+    // Get profile information to display contact details
+    this.linkedinService.getProfile().subscribe(profile => {
+      this.profile = profile;
     });
   }
 
@@ -32,6 +47,22 @@ export class ContactComponent implements OnInit {
     return this.contactForm.controls; 
   }
 
+  /**
+   * Extract profile name from URL
+   * @param url - The profile URL (LinkedIn, GitHub, Kaggle, etc.)
+   * @returns The username part of the URL
+   */
+  getProfileName(url: string | undefined): string {
+    if (!url) return '';
+    
+    const parts = url.split('/');
+    return parts[parts.length - 1];
+  }
+
+  /**
+   * Handle form submission
+   * In a real application, this would send the form data to a server
+   */
   onSubmit(): void {
     this.submitted = true;
     this.success = false;
